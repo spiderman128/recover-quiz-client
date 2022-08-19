@@ -19,7 +19,6 @@ export default function (SpecificComponent, option, adminRoute = null) {
       //To know my current status, send Auth request
       dispatch(auth())
       .then((response) => {
-
         //Not Loggined in Status
         if (!response.payload.isAuth) {
           if (option) {
@@ -45,6 +44,8 @@ export default function (SpecificComponent, option, adminRoute = null) {
         }
       }).catch((err) => {
         setLoading(false);
+        if(option)
+          props.history.push("/login");
       });
     }, []);
 
