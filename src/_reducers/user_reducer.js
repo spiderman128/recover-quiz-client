@@ -6,7 +6,8 @@ import {
 } from "../_actions/types";
 
 const initialState = {
-  userData: {},
+  userId: null,
+  userData: {}
 }
 
 export default function (state = initialState, action) {
@@ -14,11 +15,11 @@ export default function (state = initialState, action) {
     case REGISTER_USER:
       return { ...state, register: action.payload };
     case LOGIN_USER:
-      return { ...state, loginSucces: action.payload };
+      return { ...state, loginSuccess: action.payload.loginSuccess, userId: action.payload.userId };
     case AUTH_USER:
-      return { ...state, userData: action.payload };
+      return { ...state, userId: action.payload._id, userData: action.payload };
     case LOGOUT_USER:
-      return { ...state };
+      return { ...state, userId: null, userData: null };
     default:
       return state;
   }

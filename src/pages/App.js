@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
-
 import { Layout } from "antd";
 
 const LandingPage = React.lazy(() => import("./views/LandingPage/LandingPage"));

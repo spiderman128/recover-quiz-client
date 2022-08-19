@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainColor } from "../../../utils/constant";
 
@@ -8,7 +9,7 @@ export const LandingBackground = styled.div`
   height: calc(100vh - 69px);
 `;
 
-export const GetStartedBtn = styled.a`
+export const GetStartedBtn = styled(Link)`
   padding: 10px 40px;
   font-size: 20px;
   color: ${mainColor};

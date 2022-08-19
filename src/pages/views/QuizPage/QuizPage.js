@@ -116,14 +116,14 @@ function QuizPage(props) {
     return (
       <div className="row align-items-center" style={{ height: 450 }}>
         <div className="col-md-6 px-5">
-          {detailResults.map((item) => (
-            <>
+          {detailResults.map((item, index) => (
+            <div key={index}>
               <div className="d-flex py-2">
                 <h5 className="display-5 mr-auto">{item.text}</h5>
                 <h5 className="display-5 text-right">{item.mark.toFixed(2)}</h5>
               </div>
               <hr />
-            </>
+            </div>
           ))}
           <div className="d-flex py-2 font-weight-bold">
             <h4 className="display-5 mr-auto">Total Score</h4>
@@ -138,7 +138,7 @@ function QuizPage(props) {
           />
           <div style={{fontSize: 35, margin: '46px 0px', color: mainColor}}className="font-weight-bold">Congratulations!</div>
           <div className="text-right">
-            <RoundLink href="/">Back</RoundLink>
+            <RoundLink to="/">Back</RoundLink>
           </div>
         </div>
       </div>

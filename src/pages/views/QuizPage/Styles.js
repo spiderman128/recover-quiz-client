@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainColor } from "../../../utils/constant";
 
@@ -18,7 +19,7 @@ export const RoundBtn = styled.span`
   }
 `;
 
-export const RoundLink = styled.a`
+export const RoundLink = styled(Link)`
   padding: 10px 40px;
   font-size: 20px;
   color: ${mainColor};

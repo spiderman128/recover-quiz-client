@@ -1,6 +1,7 @@
 import axios from "axios";
 import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from "./types";
 import { USER_SERVER } from "../pages/Config.js";
+import setAuthToken from "../utils/setAuthToken";
 
 export function registerUser(dataToSubmit) {
   
@@ -37,12 +38,10 @@ export function auth() {
 }
 
 export function logoutUser() {
-  const request = axios
-    .get(`${USER_SERVER}/logout`)
-    .then((response) => response.data);
-
+  localStorage.removeItem("jwtToken");
+  setAuthToken(false);
   return {
     type: LOGOUT_USER,
-    payload: request,
+    payload: null,
   };
 }

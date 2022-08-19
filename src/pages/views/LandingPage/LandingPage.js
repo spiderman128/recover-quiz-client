@@ -18,7 +18,7 @@ function LandingPage() {
                   Recycle, Recycle, it's not hard to do, you can reduce
                   pollution and help the world too.
                 </p>
-                <GetStartedBtn href="/quiz" className="mt-5">
+                <GetStartedBtn to="/quiz" className="mt-5">
                   Get Started
                 </GetStartedBtn>
               </div>

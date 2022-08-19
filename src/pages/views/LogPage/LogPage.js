@@ -50,7 +50,7 @@ function LogPage(props) {
 
   useEffect(() => {
     let count = 1;
-    setData(logs.map((item) => ({
+    setData(logs.length > 0 && logs.map((item) => ({
       key: count++,
       name: item.user.name + " " + item.user.lastname,
       email: item.user.email,

@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Form, Icon, Input, Button, Checkbox, Card } from "antd";
 import { useDispatch } from "react-redux";
+import setAuthToken from "../../../utils/setAuthToken";
 
 function LoginPage(props) {
   const dispatch = useDispatch();
@@ -50,6 +51,11 @@ function LoginPage(props) {
                     "userId",
                     response.payload.userId
                   );
+                  window.localStorage.setItem(
+                    "jwtToken",
+                    response.payload.token
+                  );
+                  setAuthToken(response.payload.token);
                   if (rememberMe === true) {
                     window.localStorage.setItem("rememberMe", values.id);
                   } else {

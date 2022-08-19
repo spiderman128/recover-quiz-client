@@ -17,7 +17,8 @@ export default function (SpecificComponent, option, adminRoute = null) {
     useEffect(() => {
       setLoading(true);
       //To know my current status, send Auth request
-      dispatch(auth()).then((response) => {
+      dispatch(auth())
+      .then((response) => {
 
         //Not Loggined in Status
         if (!response.payload.isAuth) {
@@ -42,6 +43,8 @@ export default function (SpecificComponent, option, adminRoute = null) {
             }
           }
         }
+      }).catch((err) => {
+        setLoading(false);
       });
     }, []);
 
