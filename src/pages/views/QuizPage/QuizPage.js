@@ -89,31 +89,31 @@ function QuizPage(props) {
   };
 
   const getComment = (mark) => {
-    if (mark > 0 && mark <= 20) {
+    if (mark >= 0 && mark < 21) {
       return {
         title: "Scarso",
         description:
           "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
       };
-    } else if (mark > 20 && mark <= 50) {
+    } else if (mark >= 21 && mark < 51) {
       return {
         title: "Mediocre",
         description:
           "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
       };
-    } else if (mark > 50 && mark <= 70) {
+    } else if (mark >= 51 && mark < 71) {
       return {
         title: "Sufficiente",
         description:
           "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
       };
-    } else if (mark > 70 && mark <= 80) {
+    } else if (mark >= 71 && mark < 81) {
       return {
         title: "Buono",
         description:
           "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
       };
-    } else if (mark > 80 && mark <= 100) {
+    } else if (mark >= 81 && mark <= 100) {
       return {
         title: "Ottimo",
         description:
