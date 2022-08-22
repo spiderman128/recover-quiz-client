@@ -32,7 +32,15 @@ function App() {
         <Route exact path="/quiz" component={Auth(QuizPage, true)} />
         <Route exact path="/logs" component={Auth(LogPage, true, true)} />
       </Switch>
-      <Footer>Quiz Test ©2022 Created by Milan</Footer>
+      <Footer>
+        <div className="d-flex">
+          <div className="mr-auto">©2022 GeniusRei.com</div>
+          <div>
+            <a href="https://www.geniusrei.com/privacy-policy/" className="mr-4">Privacy Policy</a>
+            <a href="https://www.geniusrei.com/cookie-policy/">Cookie Policy</a>
+          </div>
+        </div>
+      </Footer>
     </Suspense>
   );
 }

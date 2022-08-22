@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../../_actions/user_actions";
 
-import { Form, Input, Button, Card } from "antd";
+import { Form, Input, Button, Card, Checkbox } from "antd";
 
 const formItemLayout = {
   labelCol: {
@@ -41,6 +41,7 @@ function RegisterPage(props) {
           name: "",
           password: "",
           confirmPassword: "",
+          policy: false,
         }}
         validationSchema={Yup.object().shape({
           name: Yup.string().required("Name is required"),
@@ -55,6 +56,8 @@ function RegisterPage(props) {
           confirmPassword: Yup.string()
             .oneOf([Yup.ref("password"), null], "Passwords must match")
             .required("Confirm Password is required"),
+          policy: Yup.boolean()
+            .equals([true], "Kindly check this to register."),
         })}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
@@ -64,6 +67,7 @@ function RegisterPage(props) {
               phonenumber: values.phoneNumber,
               name: values.name,
               lastname: values.lastName,
+              policy: values.policy,
               image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
             };
 
@@ -90,7 +94,7 @@ function RegisterPage(props) {
             handleSubmit,
           } = props;
           return (
-            <Card title="Sign Up">
+            <Card title="Registrati">
               <div className="app">
                 <Form
                   style={{ minWidth: "375px" }}
@@ -99,7 +103,7 @@ function RegisterPage(props) {
                 >
                   <Form.Item
                     required
-                    label="First Name"
+                    label="Nome"
                     hasFeedback
                     validateStatus={
                       errors.name && touched.name ? "error" : "success"
@@ -107,7 +111,7 @@ function RegisterPage(props) {
                   >
                     <Input
                       id="name"
-                      placeholder="Enter your name"
+                      placeholder="Inserisci Nome"
                       type="text"
                       value={values.name}
                       onChange={handleChange}
@@ -125,7 +129,7 @@ function RegisterPage(props) {
 
                   <Form.Item
                     required
-                    label="Last Name"
+                    label="Cognome"
                     hasFeedback
                     validateStatus={
                       errors.lastName && touched.lastName ? "error" : "success"
@@ -133,7 +137,7 @@ function RegisterPage(props) {
                   >
                     <Input
                       id="lastName"
-                      placeholder="Enter your Last Name"
+                      placeholder="Inserisci Cognome"
                       type="text"
                       value={values.lastName}
                       onChange={handleChange}
@@ -159,7 +163,7 @@ function RegisterPage(props) {
                   >
                     <Input
                       id="email"
-                      placeholder="Enter your Email"
+                      placeholder="Inserisci Email"
                       type="email"
                       value={values.email}
                       onChange={handleChange}
@@ -177,7 +181,7 @@ function RegisterPage(props) {
 
                   <Form.Item
                     required
-                    label="Phone Number"
+                    label="Numero di telefono"
                     hasFeedback
                     validateStatus={
                       errors.phoneNumber && touched.phoneNumber
@@ -187,7 +191,7 @@ function RegisterPage(props) {
                   >
                     <Input
                       id="phoneNumber"
-                      placeholder="Enter your Phone Number"
+                      placeholder="Inserisci Numero di telefono"
                       type="text"
                       value={values.phoneNumber}
                       onChange={handleChange}
@@ -213,7 +217,7 @@ function RegisterPage(props) {
                   >
                     <Input
                       id="password"
-                      placeholder="Enter your password"
+                      placeholder="Inserisci password"
                       type="password"
                       value={values.password}
                       onChange={handleChange}
@@ -231,7 +235,7 @@ function RegisterPage(props) {
 
                   <Form.Item
                     required
-                    label="Confirm"
+                    label="Conferma password"
                     hasFeedback
                     validateStatus={
                       errors.confirmPassword && touched.confirmPassword
@@ -241,7 +245,7 @@ function RegisterPage(props) {
                   >
                     <Input
                       id="confirmPassword"
-                      placeholder="Enter your confirmPassword"
+                      placeholder="Inserisci Conferma password"
                       type="password"
                       value={values.confirmPassword}
                       onChange={handleChange}
@@ -259,14 +263,37 @@ function RegisterPage(props) {
                     )}
                   </Form.Item>
 
-                  <Form.Item {...tailFormItemLayout}>
+                  <Form.Item
+                    {...tailFormItemLayout}
+                  >
+                    <div style={{lineHeight:'23px'}}>
+                    <Checkbox
+                      id="policy"
+                      checked={values.policy}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.checkbox && touched.checkbox
+                          ? "text-input error"
+                          : "text-input"
+                      }
+                    >
+                      Ho letto e acconsento all’utilizzo dei miei dati come descritto nella <a href="https://www.geniusrei.com/privacy-policy/">Privacy Policy</a>
+                    </Checkbox>
+                    </div>
+                    {errors.policy && touched.policy && (
+                      <div className="input-feedback">{errors.policy}</div>
+                    )}
+                  </Form.Item>
+
+                  <Form.Item {...tailFormItemLayout} style={{marginTop:40}}>
                     <Button
                       onClick={handleSubmit}
                       htmlType="submit"
                       type="primary"
                       disabled={isSubmitting}
                     >
-                      Register
+                       Registrati
                     </Button>
                   </Form.Item>
                 </Form>

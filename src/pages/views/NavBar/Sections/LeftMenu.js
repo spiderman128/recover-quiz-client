@@ -6,14 +6,14 @@ function LeftMenu(props) {
   return (
     <Menu mode={props.mode} selectedKeys={[]}>
       <Menu.Item key="home">
-        <Link to="/">Home</Link>
+        <a href="https://www.geniusrei.com/">Torna al sito principale </a>
       </Menu.Item>
       <Menu.Item key="test">
-        <Link to="/quiz">Quiz</Link>
+        <Link to="/quiz">Fai il test</Link>
       </Menu.Item>
-      <Menu.Item key="logs">
+      {/* <Menu.Item key="logs">
         <Link to="/logs">Logs</Link>
-      </Menu.Item>
+      </Menu.Item> */}
     </Menu>
   );
 }

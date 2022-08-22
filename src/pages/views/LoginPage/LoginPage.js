@@ -61,7 +61,7 @@ function LoginPage(props) {
                   } else {
                     localStorage.removeItem("rememberMe");
                   }
-                  props.history.push("/");
+                  props.history.push("/quiz");
                 } else {
                   setFormErrorMessage(
                     "Check out your Account or Password again"
@@ -89,7 +89,7 @@ function LoginPage(props) {
             handleSubmit,
           } = props;
           return (
-            <Card title="Sign In">
+            <Card title="Log In">
               <div className="app">
                 <form onSubmit={handleSubmit} style={{ width: "350px" }}>
                   <Form.Item required>
@@ -101,7 +101,7 @@ function LoginPage(props) {
                           style={{ color: "rgba(0,0,0,.25)" }}
                         />
                       }
-                      placeholder="Enter your email"
+                      placeholder="Inserisci Email"
                       type="email"
                       value={values.email}
                       onChange={handleChange}
@@ -126,7 +126,7 @@ function LoginPage(props) {
                           style={{ color: "rgba(0,0,0,.25)" }}
                         />
                       }
-                      placeholder="Enter your password"
+                      placeholder="Inserisci password"
                       type="password"
                       value={values.password}
                       onChange={handleChange}
@@ -164,14 +164,14 @@ function LoginPage(props) {
                       onChange={handleRememberMe}
                       checked={rememberMe}
                     >
-                      Remember me
+                      Ricordati
                     </Checkbox>
                     <a
                       className="login-form-forgot"
                       href="/reset_user"
                       style={{ float: "right" }}
                     >
-                      forgot password
+                      Password dimenticata
                     </a>
                     <div>
                       <Button
@@ -182,10 +182,10 @@ function LoginPage(props) {
                         disabled={isSubmitting}
                         onClick={handleSubmit}
                       >
-                        Log in
+                        Log In
                       </Button>
                     </div>
-                    Or <a href="/register">register now!</a>
+                    O <a href="/register">registrati ora</a>
                   </Form.Item>
                 </form>
               </div>

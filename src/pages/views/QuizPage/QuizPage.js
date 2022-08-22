@@ -88,22 +88,56 @@ function QuizPage(props) {
     setViewScore(true);
   };
 
+  const getComment = (mark) => {
+    if (mark > 0 && mark <= 20) {
+      return {
+        title: "Scarso",
+        description:
+          "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      };
+    } else if (mark > 20 && mark <= 50) {
+      return {
+        title: "Mediocre",
+        description:
+          "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      };
+    } else if (mark > 50 && mark <= 70) {
+      return {
+        title: "Sufficiente",
+        description:
+          "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      };
+    } else if (mark > 70 && mark <= 80) {
+      return {
+        title: "Buono",
+        description:
+          "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      };
+    } else if (mark > 80 && mark <= 100) {
+      return {
+        title: "Ottimo",
+        description:
+          "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      };
+    }
+  };
+
   const StartComponent = () => {
     return (
       <div className="row align-items-center" style={{ height: 450 }}>
         <div className="col-md-6">
           <div className="text-center">
             <div>
-              <h4 className="display-4">Are you ready?</h4>
+              <h4 className="display-4">Are u green enough?</h4>
             </div>
             <div className="text-center" style={{ marginTop: 70 }}>
-              <RoundBtn onClick={handleStart}>Start</RoundBtn>
+              <RoundBtn onClick={handleStart}>Inizia</RoundBtn>
             </div>
           </div>
         </div>
         <div className="col-md-6">
           <img
-            src="/image/quiz-box.jpg"
+            src="/image/quiz-start.png"
             alt="quiz-box"
             className="img-thumbnail"
           />
@@ -126,19 +160,25 @@ function QuizPage(props) {
             </div>
           ))}
           <div className="d-flex py-2 font-weight-bold">
-            <h4 className="display-5 mr-auto">Total Score</h4>
+            <h4 className="display-5 mr-auto">Punteggio Totale</h4>
             <h4 className="display-5 text-right">{mark}</h4>
           </div>
         </div>
         <div className="col-md-6 pl-5">
-          <img
-            src="/image/back.jpg"
-            alt="back"
-            className="img-thumbnail"
-          />
-          <div style={{fontSize: 35, margin: '46px 0px', color: mainColor}}className="font-weight-bold">Congratulations!</div>
+          <div
+            style={{ fontSize: 88, textAlign: "center", border: "4px solid" }}
+          >
+            {mark}
+          </div>
+          <div
+            style={{ margin: "46px 0px" }}
+            className="font-weight-bold"
+          >
+            <div style={{ fontSize: 35 }}>{getComment(mark).title}</div>
+            <div style={{ fontSize: 20 }}>{getComment(mark).description}</div>
+          </div>
           <div className="text-right">
-            <RoundLink to="/">Back</RoundLink>
+            <RoundLink to="/">Indietro</RoundLink>
           </div>
         </div>
       </div>
@@ -156,7 +196,7 @@ function QuizPage(props) {
                   className="display-4 text-success"
                   style={{ color: mainColor }}
                 >
-                  Completed!
+                  Completato!
                 </h4>
                 <div style={{ marginTop: 60 }}>
                   {loading ? (
@@ -166,16 +206,16 @@ function QuizPage(props) {
                     ></div>
                   ) : sendStatus === 0 ? (
                     <div style={{ fontSize: 25 }}>
-                      Failed to send anwers.
+                      Errore nell'invio delle risposte.
                       <RoundBtn className="ml-3" onClick={handleSend}>
-                        Try again
+                        Prova di nuovo.
                       </RoundBtn>
                     </div>
                   ) : sendStatus === 1 ? (
                     <div style={{ fontSize: 25 }}>
-                      Send answers successfully.
+                      Risposte inviate correttamente.
                       <RoundBtn className="ml-3" onClick={handleViewScore}>
-                        View Scores
+                        Guarda i punteggi
                       </RoundBtn>
                     </div>
                   ) : null}
@@ -193,7 +233,7 @@ function QuizPage(props) {
                   className="display-5 mx-auto"
                   style={{
                     marginTop: 70,
-                    height: 70
+                    height: 70,
                   }}
                 >
                   {answers[cursor].text}
@@ -204,7 +244,7 @@ function QuizPage(props) {
                     className="btn btn-outline-success mr-4"
                     style={{ width: 100 }}
                   >
-                    YES
+                    SI
                   </button>
                   <button
                     onClick={handleNext(false)}
@@ -232,7 +272,7 @@ function QuizPage(props) {
 
   return (
     <section className="container py-5">
-      <Card title="Quiz">
+      <Card title="Fai il test">
         <div>
           {cursor < 0 ? (
             <StartComponent />
