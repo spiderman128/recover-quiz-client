@@ -18,7 +18,7 @@ function LandingPage() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ante mi, hendrerit sit amet lacinia at, lobortis nec felis.
                 </p>
                 <GetStartedBtn to="/quiz" className="mt-5">
-                  Fai il test.
+                  Fai il test
                 </GetStartedBtn>
               </div>
             </div>
